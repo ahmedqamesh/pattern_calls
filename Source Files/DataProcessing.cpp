@@ -4,24 +4,24 @@
 #include <iomanip>
 #include "../Header Files/DataProcessing.h"
 using namespace std;
-DataProcessing::DataProcessing(const string& file_name) {
+DataProcessing::DataProcessing(const string& fileName) {
         /*
          * The function reads an existing data file and saves it into a vector of strings
          * Parameters:
-           file_name [string]: name of the output file
+           fileName [string]: name of the output file
          * return:
            datavector [vector<vector<string>>] : vector includes all the data
          */
-        stream_read.open(file_name, ios::binary);
-        string out_file = remove_extension(file_name) + "_OUT.csv";
-        stream_write.open(out_file, ios::binary);
-        stream_write << stream_read.rdbuf(); // Copy read file into output file
-        bool line_is_header = true; // First line assumed to be the header
-        stream_read.seekg(0); // "Rewind" infile stream
-        while (stream_read) {
+        streamRead.open(fileName, ios::binary);
+        string outFile = RemoveExtension(fileName) + "_OUT.csv";
+        streamWrite.open(outFile, ios::binary);
+        streamWrite << streamRead.rdbuf(); // Copy read file into output file
+        bool lineIsHeader = true; // First line assumed to be the header
+        streamRead.seekg(0); // "Rewind" infile stream
+        while (streamRead) {
                 // Grab whole row
                 string s;
-                if (!getline(stream_read, s))
+                if (!getline(streamRead, s))
                         break;
 
                 istringstream ss (s);
@@ -34,12 +34,12 @@ DataProcessing::DataProcessing(const string& file_name) {
                         record.push_back(s);
                 }
 
-                if (line_is_header)
+                if (lineIsHeader)
                         header = record;
                 else
                         datavector.push_back(record);
                 // First iteration clears through the header
-                line_is_header = false;
+                lineIsHeader = false;
         }
 }
 
@@ -53,7 +53,7 @@ DataProcessing::CsvVector DataProcessing::rows() {
         return datavector;
 }
 
-void DataProcessing::specify_row(string col, string nam){
+void DataProcessing::SpecifyRow(string col, string nam){
         /*
          * The function return a vector of indicies corresponds to a specific element.
          * Parameters:
@@ -62,8 +62,8 @@ void DataProcessing::specify_row(string col, string nam){
          * return:
            colIndex[i] [vector<int>] : vector of indicies
          */
-        vector<string>  column = column_info(col);// get column col
-        vector<int> colIndex = index_from_vector(column, nam); // get index of a row specific name nam
+        vector<string>  column = ColumnInfo(col);// get column col
+        vector<int> colIndex = IndexFromVector(column, nam); // get index of a row specific name nam
         for(int i=0; i <colIndex.size(); ++i) GetRow(colIndex[i]);
 }
 
@@ -76,12 +76,12 @@ DataProcessing::CsvVector DataProcessing::GetColumn(const string& s) {
            columnData[i] [[vector<vector<string>>]] : vector of strings
          */
         DataProcessing::CsvVector columnData;
-        columnData.push_back(column_info(s));
+        columnData.push_back(ColumnInfo(s));
         return columnData;
 }
 
 
-vector<string> DataProcessing::get_header() {
+vector<string> DataProcessing::GetHeader() {
         return header;
 }
 vector<string> DataProcessing::GetRow(const int& i) {
@@ -100,7 +100,7 @@ vector<string> DataProcessing::GetRow(const int& i) {
 }
 
 
-vector<string> DataProcessing::column_info(const string& s) {
+vector<string> DataProcessing::ColumnInfo(const string& s) {
 /* Returns all data in the passed column(s)
  * Parameters:
     s [string]: name of the column
@@ -108,7 +108,7 @@ vector<string> DataProcessing::column_info(const string& s) {
     columnData[i] [[vector<vector<string>>]] : vector of strings
  */
         vector<string> data;
-        int index = index_from_string(s);
+        int index = IndexFromString(s);
 
         for (auto&& i : datavector) {
                 data.push_back(i[index]);
@@ -116,7 +116,7 @@ vector<string> DataProcessing::column_info(const string& s) {
         return data;
 }
 
-vector<int> DataProcessing::index_from_vector(vector<string> v, string key){
+vector<int> DataProcessing::IndexFromVector(vector<string> v, string key){
       /*
        * get a vector of indicies of a specific element in an array
        * parameters:
@@ -137,7 +137,7 @@ vector<int> DataProcessing::index_from_vector(vector<string> v, string key){
         return colIndex;
 }
 
-int DataProcessing::index_from_string(const string& s) {
+int DataProcessing::IndexFromString(const string& s) {
         /*
          * get index of a specific element s in an array
          * parameters:
@@ -153,7 +153,7 @@ int DataProcessing::index_from_string(const string& s) {
         return pos;
 }
 
-string DataProcessing::remove_extension(const string& s) {
+string DataProcessing::RemoveExtension(const string& s) {
         // remove extension part from a file name
         string ret = s;
         ret.erase(ret.find_last_of("."), string::npos);

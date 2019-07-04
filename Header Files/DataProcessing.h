@@ -7,30 +7,30 @@
 #ifndef DATAPROCESSING_H_
 #define DATAPROCESSING_H_
 #include <string>
-#include<tuple>
+#include <tuple>
 #include <string>
 #include <cstdlib>
-;class DataProcessing {
-	typedef vector<vector<string>> CsvVector;
+; class DataProcessing {
+								typedef vector<vector<string>> CsvVector;
 
-	public:
-		DataProcessing() = default;
-		DataProcessing(const string&);
-	    inline void headers();
-	    inline vector<string> get_header();
+public:
+								DataProcessing() = default;
+								DataProcessing(const string&);
+								inline void headers();
+								inline vector<string> GetHeader();
 
-	    vector<string> GetRow(const int&);
-	    inline CsvVector rows();
-	    CsvVector GetColumn(const string&);
-	    void specify_row(string col, string nam);
-	    vector<int> index_from_vector(vector<string>  v, string key);
-			vector<string> column_info(const string&);
-	private:
-	    vector<string> header;
-	    CsvVector datavector;
-	    ifstream stream_read;
-	    ofstream stream_write;
-	    inline string remove_extension(const string&);
-	    int index_from_string(const string&);
+								vector<string> GetRow(const int&);
+								inline CsvVector rows();
+								CsvVector GetColumn(const string&);
+								void SpecifyRow(string col, string nam);
+								vector<int> IndexFromVector(vector<string>  v, string key);
+								vector<string> ColumnInfo(const string&);
+private:
+								vector<string> header;
+								CsvVector datavector;
+								ifstream streamRead;
+								ofstream streamWrite;
+								inline string RemoveExtension(const string&);
+								int IndexFromString(const string&);
 };
 #endif /* DATAPROCESSING_H_ */
