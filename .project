@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>pattern_calls</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<variableList>
+		<variable>
+			<name>Header_LOC</name>
+			<value>file:/Users/ahmedqamesh/git%20/pattern_calls/Header%20Files</value>
+		</variable>
+		<variable>
+			<name>Source_LOC</name>
+			<value>file:/Users/ahmedqamesh/git%20/pattern_calls/Source%20Files</value>
+		</variable>
+	</variableList>
+</projectDescription>
