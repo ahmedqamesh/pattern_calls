@@ -30,3 +30,7 @@ id,name,patternFile,called
 28,Yannick,src/patterns/Functional_Yannick.pat,true
 29,George,src/patterns/Functional_George.pat,false
 30,Hans,src/patterns/Functional_Hans.pat,true
+31,Martin,src/patterns/Functional_Martin.pat,true
+32,Yannick,src/patterns/Functional_Yannick.pat,true
+33,Edward,src/patterns/Functional_Edward.pat,false
+34,Qamesh,src/patterns/Functional_Qamesh.pat,false
