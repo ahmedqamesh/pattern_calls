@@ -26,7 +26,7 @@ Source Files-----| // includes the building structure for the run
                 PatternCalls.cpp    //Includes the main function for user interface
 src/patterns/----- // includes all the saved data files during the run.
 ```
-##  RUN THE CODE----
+##  RUN THE CODE
 The code supports C++11
 ```
 $ g++ PatternCalls.cpp
