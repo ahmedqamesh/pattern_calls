@@ -4,11 +4,11 @@ This code in C++ is build to handle information about pattern calls and display 
 ## DESCRIPTION
 The code can produce a training example of dummy data for pattern calls tuples and store it into a file for further analysis.
 This version 1.0 give the following queries:
-      • retrieve a pattern call with a specified identifier, e.g. 42
-      • list all pattern calls with a specified name, e.g. “myPattern”
-      • list all pattern calls with a specified path, e.g. “src/patterns/Functional.pat”
-      • list all pattern calls which are skipped, i. e. when the “called” flag is false
-      • list all pattern calls which are not skipped, i. e. when the “called ” flag is true
+- retrieve a pattern call with a specified identifier, e.g. 42
+- list all pattern calls with a specified name, e.g. “myPattern”
+- list all pattern calls with a specified path, e.g. “src/patterns/Functional.pat”
+- list all pattern calls which are skipped, i. e. when the “called” flag is false
+- list all pattern calls which are not skipped, i. e. when the “called ” flag is true
 
 ## Directory Structure
 The directory includes four main directories
